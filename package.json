@@ -1,0 +1,81 @@
+{
+  "name": "map-planner-1055",
+  "version": "0.1.0",
+  "description": "Appli desktop hors ligne pour planifier les territoires d'alliance dans Rise of Kingdoms (Map Planner 1055).",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite build && electron .",
+    "electron:dev": "electron . --dev",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "fetch-data": "node scripts/fetch-data.mjs",
+    "inspect-data": "node scripts/inspect-data.mjs",
+    "dist": "vite build && electron-builder --win portable nsis",
+    "dist:dir": "vite build && electron-builder --win dir",
+    "release": "vite build && electron-builder --win nsis --publish always",
+    "build:web": "tsc --noEmit && vite build",
+    "server": "node server/server.mjs",
+    "keys": "node server/admin.mjs",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "fflate": "^0.8.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.0.10",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.15.3",
+    "playwright-core": "^1.63.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3"
+  },
+  "build": {
+    "appId": "app.mapplanner1055.desktop",
+    "productName": "Map Planner 1055",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "build/icon.ico",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ],
+      "artifactName": "Map-Planner-1055-${version}.${ext}",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "npmRebuild": false,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "TopBart",
+        "repo": "map-planner-1055",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "author": "Map Planner 1055"
+}

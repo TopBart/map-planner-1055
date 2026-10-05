@@ -1,0 +1,26 @@
+# Dépendances et sorties de build
+node_modules/
+dist/
+release/
+*.tsbuildinfo
+coverage/
+
+# Données de cartes et plans de l'utilisateur (ne pas publier : images et données du jeu)
+data/*
+!data/README.md
+
+# Secrets et configuration locale (serveur de clés d'accès)
+.env
+.env.*
+!.env.*.example
+server/keys.json
+server/secret.txt
+*.pem
+
+# Divers
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

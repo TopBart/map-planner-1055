@@ -1,0 +1,35 @@
+name: Release
+
+# Publier une version : augmenter "version" dans package.json, puis
+#   git tag v1.2.3 && git push origin v1.2.3
+# L'installeur Windows et latest.yml (mises à jour automatiques) sont publiés dans les Releases du dépôt.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Le tag correspond à la version
+        shell: bash
+        run: |
+          v="$(node -p "require('./package.json').version")"
+          [ "v$v" = "${GITHUB_REF_NAME}" ] || { echo "Tag ${GITHUB_REF_NAME} ≠ version $v de package.json"; exit 1; }
+      - run: npm ci
+      - run: npm test
+      - name: Construire et publier l'installeur
+        run: npm run release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Variables du dépôt (Settings → Secrets and variables → Actions → Variables)
+          VITE_REQUIRE_KEY: ${{ vars.VITE_REQUIRE_KEY }}
+          VITE_SERVER_URL: ${{ vars.VITE_SERVER_URL }}

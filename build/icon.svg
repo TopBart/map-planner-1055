@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#3a1a0c"/><stop offset="1" stop-color="#120804"/></radialGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#e8591a"/></linearGradient>
+    <linearGradient id="bird" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1d6"/><stop offset=".45" stop-color="#ffb347"/><stop offset="1" stop-color="#f26a1b"/></linearGradient>
+    <g id="half">
+      <path d="M262 268 C296 252 330 226 376 186 C368 218 358 240 346 256 C370 246 392 234 418 218 C404 248 382 270 356 284 C378 283 396 279 414 271 C396 302 364 322 322 327 C300 330 282 324 262 312 Z"/>
+      <path d="M258 322 C228 346 206 384 214 424 C236 398 252 372 258 340 Z"/>
+      <path d="M258 326 C246 366 246 398 262 446 C276 404 270 368 262 326 Z"/>
+    </g>
+  </defs>
+  <circle cx="256" cy="256" r="250" fill="#0d0603"/>
+  <circle cx="256" cy="256" r="238" fill="url(#ring)"/>
+  <circle cx="256" cy="256" r="222" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="208" fill="none" stroke="#ff8a3d" stroke-opacity=".35" stroke-width="2"/>
+  <g fill="url(#bird)">
+    <use href="#half"/>
+    <use href="#half" transform="translate(512 0) scale(-1 1)"/>
+    <path d="M256 206 C244 214 240 236 246 262 C250 290 252 312 256 332 C260 312 262 290 266 262 C272 236 268 214 256 206 Z"/>
+    <path d="M256 168 C262 176 268 184 266 196 C264 204 260 208 256 210 C252 208 248 204 246 196 C244 184 250 176 256 168 Z"/>
+    <path d="M247 200 L265 200 L256 218 Z" fill="#c2410c"/>
+  </g>
+  <text x="256" y="122" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="64" fill="#ffffff" stroke="#3a1a0c" stroke-width="3" paint-order="stroke" letter-spacing="2">1055</text>
+</svg>
