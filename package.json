@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron-updater": "^6.8.9",
+    "electron-updater": "^6.8.11",
     "fflate": "^0.8.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
